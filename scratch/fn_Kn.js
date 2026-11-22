@@ -1,0 +1,1 @@
+function Kn({eyebrow:n,title:r,text:s,align:a="left"}

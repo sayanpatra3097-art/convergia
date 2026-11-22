@@ -1,0 +1,1 @@
+function y2({member:n,index:r}
