@@ -736,84 +736,28 @@ export default function App() {
       <header className="site-header-two-tier">
         {/* Tier 1: Logo & University Bar */}
         <div className="header-top-logo-bar">
-          <div className="container header-top-container">
-            {/* Desktop Layout */}
-            <div className="header-top-inner header-top-inner-desktop">
-              <div className="header-top-item header-top-uem-col">
-                <div className="header-provided-logo-item">
-                  <img src="/images/uem-logo.png" alt="University of Engineering & Management (UEM) Jaipur" className="header-top-provided-logo header-top-uem-logo" onError={(e) => { e.target.style.display = 'none'; }} />
-                </div>
-              </div>
-
-              <div className="header-top-item header-top-brand-col">
-                <a className="brand-mapcon brand-mapcon-center" href="#home" onClick={(e) => { e.preventDefault(); handleTabChange('home'); }}>
-                  <img
-                    src="/images/convergia-logo.png"
-                    alt="CONVERGIA 2027"
-                    className="header-convergia-brand-logo"
-                    onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.03)'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-                  />
-                </a>
-              </div>
-
-              <div className="header-top-item header-top-right-col">
-                <div className="brand-badge-pill">
-                  HYBRID · JAIPUR, INDIA
-                </div>
+          <div className="container header-top-inner">
+            <div className="header-top-item header-top-uem-col">
+              <div className="header-provided-logo-item">
+                <img src="/images/uem-logo.png" alt="University of Engineering & Management (UEM) Jaipur" className="header-top-provided-logo header-top-uem-logo" onError={(e) => { e.target.style.display = 'none'; }} />
               </div>
             </div>
 
-            {/* Mobile Layout (Strictly matching reference screenshot) */}
-            <div className="header-top-mobile-layout">
-              {/* Row 1: Left emblem, Center CONVERGIA wordmark, Right UEM logo */}
-              <div className="mobile-header-logos-row">
-                <div className="mobile-header-crest">
-                  <img
-                    src="/images/logo.png"
-                    alt="CONVERGIA Emblem"
-                    className="mobile-emblem-img"
-                    onError={(e) => { e.target.style.display = 'none'; }}
-                  />
-                </div>
-                <div className="mobile-header-brand">
-                  <a href="#home" onClick={(e) => { e.preventDefault(); handleTabChange('home'); }}>
-                    <img
-                      src="/images/convergia-logo.png"
-                      alt="CONVERGIA 2027"
-                      className="mobile-brand-img"
-                    />
-                  </a>
-                </div>
-                <div className="mobile-header-uem">
-                  <img
-                    src="/images/uem-logo.png"
-                    alt="UEM Jaipur"
-                    className="mobile-uem-img"
-                    onError={(e) => { e.target.style.display = 'none'; }}
-                  />
-                </div>
-              </div>
-
-              {/* Row 2: Centered Date & Location */}
-              <div className="mobile-header-subtitle">
-                <span>NOVEMBER 27–28, 2027 | JAIPUR</span>
-              </div>
-
-              {/* Row 3: Co-sponsor IEEE partner logos */}
-              <div className="mobile-header-partners-row">
+            <div className="header-top-item header-top-brand-col">
+              <a className="brand-mapcon brand-mapcon-center" href="#home" onClick={(e) => { e.preventDefault(); handleTabChange('home'); }}>
                 <img
-                  src="/images/ieee-cs-uemj-logo.png"
-                  alt="IEEE Computer Society UEMJ Student Branch Chapter"
-                  className="mobile-partner-img"
-                  onError={(e) => { e.target.style.display = 'none'; }}
+                  src="/images/convergia-logo.png"
+                  alt="CONVERGIA 2027"
+                  className="header-convergia-brand-logo"
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.03)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
                 />
-                <img
-                  src="/images/ieee-uemj-student-branch.png"
-                  alt="IEEE UEMJ Student Branch"
-                  className="mobile-partner-img"
-                  onError={(e) => { e.target.style.display = 'none'; }}
-                />
+              </a>
+            </div>
+
+            <div className="header-top-item header-top-right-col">
+              <div className="brand-badge-pill">
+                HYBRID · JAIPUR, INDIA
               </div>
             </div>
           </div>
@@ -822,18 +766,10 @@ export default function App() {
         {/* Tier 2: Main Dark Navigation Bar */}
         <div className={`main-nav-bar-dark ${isScrolled ? 'is-scrolled' : ''}`}>
           <div className="container nav-bar-inner">
-            {/* Hamburger Menu Toggle on the LEFT for mobile (matching reference) */}
-            <button
-              type="button"
-              className="menu-toggle-btn mobile-menu-left"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
+            <div className="mobile-brand-indicator">
+              <span className="mobile-brand-title">CONVERGIA 2027</span>
+            </div>
 
-            {/* Desktop Navigation */}
             <nav className="desktop-nav-dark" aria-label="Main navigation">
               {navLinks.map((tab) => (
                 <a
@@ -847,7 +783,6 @@ export default function App() {
               ))}
             </nav>
 
-            {/* Desktop Right Action */}
             <div className="nav-actions-right">
               <button
                 type="button"
@@ -856,6 +791,16 @@ export default function App() {
               >
                 <span>Register Interest</span>
                 <ArrowUpRight size={14} aria-hidden="true" />
+              </button>
+
+              <button
+                type="button"
+                className="menu-toggle-btn"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle navigation menu"
+                aria-expanded={mobileMenuOpen}
+              >
+                {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
             </div>
           </div>

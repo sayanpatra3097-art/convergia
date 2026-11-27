@@ -503,7 +503,7 @@
 
 /* Mobile Menu Toggle Button */
 .menu-toggle-btn {
-  display: none;
+  display: none !important;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 6px;
@@ -575,210 +575,112 @@
   font-weight: 700;
 }
 
-/* Mobile Header and Navigation Styles (Matching Reference) */
-.header-top-container {
-  width: min(1380px, calc(100% - 32px));
-  margin: 0 auto;
-}
-
-.header-top-mobile-layout {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 4px 0 6px;
-  gap: 8px;
-}
-
-.mobile-header-logos-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 4px;
-}
-
-.mobile-header-crest {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex: 0 0 auto;
-}
-
-.mobile-emblem-img {
-  height: 48px;
-  max-width: 65px;
-  object-fit: contain;
-}
-
-.mobile-header-brand {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1 1 auto;
-  padding: 0 8px;
-}
-
-.mobile-brand-img {
-  height: 52px;
-  max-width: 190px;
-  object-fit: contain;
-}
-
-.mobile-header-uem {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 0 0 auto;
-}
-
-.mobile-uem-img {
-  height: 44px;
-  max-width: 80px;
-  object-fit: contain;
-}
-
-.mobile-header-subtitle {
-  text-align: center;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  font-size: 13.5px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: #173328;
-  text-transform: uppercase;
-  margin: 2px 0 0;
-  white-space: nowrap;
-}
-
-.mobile-header-partners-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  width: 100%;
-  padding: 2px 0 2px;
-}
-
-.mobile-partner-img {
-  height: 34px;
-  max-width: 145px;
-  object-fit: contain;
-}
-
 /* Responsive Breakpoints */
 @media (max-width: 960px) {
-  .header-top-inner-desktop {
-    display: none !important;
-  }
-
-  .header-top-mobile-layout {
-    display: flex !important;
-  }
-
-  .header-top-logo-bar {
-    padding: 10px 0 8px !important;
-  }
-
   .desktop-nav-dark {
     display: none !important;
   }
 
-  .nav-actions-right {
-    display: none !important;
+  .menu-toggle-btn {
+    display: flex !important;
   }
 
   .mobile-brand-indicator {
-    display: none !important;
+    display: flex !important;
   }
 
   .nav-bar-inner {
-    justify-content: flex-start !important;
-    padding: 6px 16px !important;
-    min-height: 48px !important;
+    justify-content: space-between !important;
+    padding: 8px 0;
+    min-height: 52px;
   }
 
-  .menu-toggle-btn.mobile-menu-left {
-    display: flex !important;
-    margin-right: auto;
-    background: transparent !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    border-radius: 4px !important;
-    padding: 5px 8px !important;
-    width: 36px !important;
-    height: 34px !important;
-    color: #ffffff !important;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-  }
-
-  .menu-toggle-btn.mobile-menu-left:hover,
-  .menu-toggle-btn.mobile-menu-left:focus {
-    background: rgba(255, 255, 255, 0.15) !important;
-    border-color: rgba(255, 255, 255, 0.6) !important;
+  .btn-register-now {
+    font-size: 12px;
+    padding: 6px 14px;
   }
 }
 
 @media (max-width: 768px) {
-  .mobile-brand-img {
-    height: 46px;
-    max-width: 165px;
+  .header-top-logo-bar {
+    padding: 12px 0 10px;
   }
 
-  .mobile-emblem-img {
-    height: 42px;
-    max-width: 55px;
+  .header-top-logo-bar .header-top-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    text-align: center !important;
+    width: 100% !important;
   }
 
-  .mobile-uem-img {
-    height: 40px;
-    max-width: 70px;
+  .header-top-item {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
 
-  .mobile-header-subtitle {
-    font-size: 12px;
-    letter-spacing: 1.5px;
+  .header-top-uem-col {
+    order: 1;
   }
 
-  .mobile-partner-img {
-    height: 28px;
-    max-width: 130px;
+  .header-top-provided-logo {
+    height: 48px !important;
+    max-height: 52px !important;
+    max-width: 180px !important;
+    margin: 0 auto !important;
+  }
+
+  .header-top-brand-col {
+    order: 2;
+  }
+
+  .header-convergia-brand-logo {
+    height: 64px !important;
+    max-height: 70px !important;
+    max-width: 86vw !important;
+    margin: 0 auto !important;
+  }
+
+  .header-top-right-col {
+    order: 3;
+  }
+
+  .brand-badge-pill {
+    font-size: 10px;
+    padding: 4px 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .mobile-header-logos-row {
-    padding: 0 2px;
+  .header-convergia-brand-logo {
+    height: 54px !important;
+    max-height: 60px !important;
+    max-width: 90vw !important;
   }
 
-  .mobile-brand-img {
-    height: 40px;
-    max-width: 145px;
+  .header-top-provided-logo {
+    height: 42px !important;
+    max-height: 46px !important;
+    max-width: 150px !important;
   }
 
-  .mobile-emblem-img {
-    height: 38px;
-    max-width: 48px;
+  .mobile-brand-title {
+    font-size: 15px;
   }
 
-  .mobile-uem-img {
-    height: 36px;
-    max-width: 60px;
+  .btn-register-now span {
+    display: none;
   }
 
-  .mobile-header-subtitle {
-    font-size: 11px;
-    letter-spacing: 1.2px;
+  .btn-register-now {
+    padding: 7px 10px;
   }
-
-  .mobile-partner-img {
-    height: 24px;
-    max-width: 115px;
-  }
-
-  .mobile-header-partners-row {
-    gap: 12px;
+  
+  .btn-register-now::after {
+    content: "Register";
   }
 }
