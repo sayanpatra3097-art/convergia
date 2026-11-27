@@ -84,3 +84,373 @@
 .marquee-logo-card:hover img {
   transform: scale(1.08) !important;
 }
+
+/* ==========================================================================
+   Committee Hierarchical Tree Structure & Styling (CONVERGIA 2027)
+   ========================================================================== */
+.committee-section-enhanced {
+  background: #fdfcfa;
+  padding: 50px 0 90px;
+}
+
+.committee-tree-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 1160px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.committee-tier-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.committee-tree-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 42px;
+  position: relative;
+  width: 100%;
+}
+
+.committee-tree-connector-line {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, #c76d42 0%, #244b3c 100%);
+  opacity: 0.35;
+}
+
+.committee-tree-connector-node {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c76d42;
+  box-shadow: 0 0 0 4px rgba(199, 109, 66, 0.18);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.committee-tier-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.committee-tier-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #c76d42;
+  background: rgba(199, 109, 66, 0.08);
+  border: 1px solid rgba(199, 109, 66, 0.22);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+
+.committee-tier-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 25px;
+  color: #173328;
+  letter-spacing: 0.2px;
+  margin: 0;
+}
+
+.committee-tier-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 4px 0 0;
+  font-weight: 500;
+}
+
+/* Tier Layout Rows */
+.committee-row-single {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.committee-row-single .committee-photo-card {
+  width: 100%;
+  max-width: 340px;
+}
+
+.committee-row-double {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 340px));
+  justify-content: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.committee-row-triple {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* Split Columns (Chairs & Convenors, Co-Chairs & Co-Convenors) */
+.committee-split-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.committee-split-panel {
+  background: #ffffff;
+  border: 1px solid #d8d4c9;
+  border-radius: 18px;
+  padding: 22px 20px 24px;
+  box-shadow: 0 4px 18px rgba(23, 51, 40, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.committee-split-panel:hover {
+  box-shadow: 0 10px 26px rgba(23, 51, 40, 0.09);
+  border-color: #bfb9ac;
+}
+
+.committee-subgroup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #f4f1e9;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.committee-subgroup-title {
+  font-family: Plus Jakarta Sans, sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: #173328;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.committee-subgroup-count {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: #f4f1e9;
+  color: #475569;
+}
+
+.committee-subgroup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+  flex: 1;
+}
+
+/* Card Enhancements */
+.committee-photo-card {
+  background: #ffffff;
+  border: 1px solid #d8d4c9;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 3px 14px rgba(23, 51, 40, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.committee-photo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(23, 51, 40, 0.12);
+  border-color: #c76d42;
+}
+
+.committee-photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 230px;
+  background: linear-gradient(135deg, #f4f1e9 0%, #e2ded4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid #e8e4da;
+}
+
+.committee-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.committee-photo-card:hover .committee-photo-img {
+  transform: scale(1.04);
+}
+
+.committee-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #ffffff 0%, #f4f1e9 100%);
+}
+
+.placeholder-avatar-bubble {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #173328, #244b3c);
+  color: #f4f1e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 14px rgba(23, 51, 40, 0.22);
+  border: 3px solid #ffffff;
+  transition: transform 0.25s ease;
+}
+
+.committee-photo-card:hover .placeholder-avatar-bubble {
+  transform: scale(1.06);
+}
+
+.committee-role-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* Badge Type Variations */
+.badge-type-patron .committee-role-badge {
+  background: linear-gradient(135deg, #b45309, #d97706);
+  color: #ffffff;
+}
+
+.badge-type-leadership .committee-role-badge {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #ffffff;
+}
+
+.badge-type-chair .committee-role-badge {
+  background: linear-gradient(135deg, #c76d42, #ea580c);
+  color: #ffffff;
+}
+
+.badge-type-convenor .committee-role-badge {
+  background: linear-gradient(135deg, #173328, #244b3c);
+  color: #f4f1e9;
+}
+
+.badge-type-tpc .committee-role-badge {
+  background: linear-gradient(135deg, #0f766e, #0d9488);
+  color: #ffffff;
+}
+
+.badge-type-organizing .committee-role-badge {
+  background: linear-gradient(135deg, #c76d42, #d97706);
+  color: #ffffff;
+}
+
+.badge-type-publication .committee-role-badge {
+  background: linear-gradient(135deg, #4338ca, #6366f1);
+  color: #ffffff;
+}
+
+/* Card Body */
+.committee-card-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.committee-member-name {
+  font-family: Plus Jakarta Sans, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #173328;
+  margin: 0 0 5px;
+  line-height: 1.35;
+}
+
+.committee-member-designation {
+  font-size: 12.5px;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0 0 12px;
+  flex: 1;
+}
+
+.committee-member-affil {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #244b3c;
+  background: rgba(36, 75, 60, 0.06);
+  border: 1px solid rgba(36, 75, 60, 0.12);
+  border-radius: 6px;
+  padding: 5px 8px;
+  margin-top: auto;
+  line-height: 1.35;
+}
+
+.committee-filter-pill.active {
+  background: #fff;
+  color: var(--navy);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(23, 51, 40, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 860px) {
+  .committee-split-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .committee-row-double {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+  }
+}

@@ -274,132 +274,267 @@ const foreignFees = [
   { category: "Participant (only)", amount: "$50", notes: "Virtual attendance and access to digital conference proceedings" }
 ];
 
-const committeeData = [
-  // Chief Patrons
+const committeeFilters = [
+  { id: 'all', label: 'All Hierarchy Tiers' },
+  { id: 'patrons', label: 'Patrons & Leadership' },
+  { id: 'chairs', label: 'Chairs & Convenors' },
+  { id: 'tpc', label: 'TPC & Organizing' },
+  { id: 'publication', label: 'Publication & Editorial' }
+];
+
+const committeeTiers = [
+  // Tier 1: Chief Patrons
   {
-    name: "Prof. (Dr.) Banani Chakrabarti",
-    role: "Chief Patron",
-    badgeType: "leadership",
-    category: "patrons",
-    designation: "Chancellor",
-    affiliation: "University of Engineering & Management (UEM), Jaipur",
-    initials: "BC",
-    photo: "/images/committee/banani-chakrabarti.jpeg"
+    tierId: "chief-patrons",
+    tierBadge: "Tier 1 • Chief Patrons",
+    title: "Chief Patrons",
+    subtitle: "Visionary patronage & patron-in-chief leadership",
+    filterCategory: "patrons",
+    layout: "centered-2",
+    members: [
+      {
+        name: "Prof. (Dr.) Banani Chakrabarti",
+        role: "Chief Patron",
+        badgeType: "patron",
+        designation: "Chancellor",
+        affiliation: "University of Engineering & Management (UEM), Jaipur",
+        initials: "BC",
+        photo: "/images/committee/banani-chakrabarti.jpeg"
+      },
+      {
+        name: "Prof. (Dr.) Satyajit Chakrabarti",
+        role: "Chief Patron",
+        badgeType: "patron",
+        designation: "Director",
+        affiliation: "Institute of Engineering & Management (IEM) / UEM Group",
+        initials: "SC",
+        photo: "/images/committee/satyajit-chakrabarti.jpeg"
+      }
+    ]
   },
+  // Tier 2: Patron
   {
-    name: "Prof. (Dr.) Satyajit Chakrabarti",
-    role: "Chief Patron",
-    badgeType: "leadership",
-    category: "patrons",
-    designation: "Director",
-    affiliation: "Institute of Engineering & Management (IEM) / UEM Group",
-    initials: "SC",
-    photo: "/images/committee/satyajit-chakrabarti.jpeg"
+    tierId: "patron",
+    tierBadge: "Tier 2 • Patron",
+    title: "Patron",
+    subtitle: "Institutional leadership & executive direction",
+    filterCategory: "patrons",
+    layout: "centered-1",
+    members: [
+      {
+        name: "Prof. (Dr.) Biswajoy Chatterjee",
+        role: "Patron",
+        badgeType: "patron",
+        designation: "Vice Chancellor",
+        affiliation: "University of Engineering & Management (UEM), Jaipur",
+        initials: "BC",
+        photo: "/images/committee/biswajoy-chatterjee.jpeg"
+      }
+    ]
   },
-  // Patrons
+  // Tier 3: Honorary Chairs
   {
-    name: "Prof. (Dr.) Biswajoy Chatterjee",
-    role: "Patron",
-    badgeType: "leadership",
-    category: "patrons",
-    designation: "Vice Chancellor",
-    affiliation: "University of Engineering & Management (UEM), Jaipur",
-    initials: "BC"
+    tierId: "honorary-chairs",
+    tierBadge: "Tier 3 • Honorary Chairs",
+    title: "Honorary Chairs",
+    subtitle: "Distinguished academic oversight & honorary advisory",
+    filterCategory: "patrons",
+    layout: "centered-2",
+    members: [
+      {
+        name: "Prof. (Dr.) Pradeep Kumar Sharma",
+        role: "Honorary Chair",
+        badgeType: "leadership",
+        designation: "Registrar",
+        affiliation: "University of Engineering & Management (UEM), Jaipur",
+        initials: "PS",
+        photo: "/images/committee/pradeep-kumar-sharma.jpeg"
+      },
+      {
+        name: "Prof. (Dr.) Mukesh Yadav",
+        role: "Honorary Chair",
+        badgeType: "leadership",
+        designation: "Professor",
+        affiliation: "University of Engineering & Management (UEM), Jaipur",
+        initials: "MY",
+        photo: "/images/committee/mukesh-yadav.jpeg"
+      }
+    ]
   },
+  // Tier 4: Conference Chair & Convenor
   {
-    name: "Prof. (Dr.) Pradeep Kumar Sharma",
-    role: "Patron",
-    badgeType: "leadership",
-    category: "patrons",
-    designation: "Registrar",
-    affiliation: "University of Engineering & Management (UEM), Jaipur",
-    initials: "PS",
-    photo: "/images/committee/pradeep-kumar-sharma.jpeg"
+    tierId: "chairs-convenors",
+    tierBadge: "Tier 4 • Conference Leadership",
+    title: "Conference Chairs & Convenors",
+    subtitle: "Executive conference execution & academic convening",
+    filterCategory: "chairs",
+    layout: "split-columns",
+    columns: [
+      {
+        groupTitle: "Conference Chairs",
+        members: [
+          {
+            name: "Prof. (Dr.) Chandra Prakash",
+            role: "Conference Chair",
+            badgeType: "chair",
+            designation: "Professor",
+            affiliation: "University of Engineering & Management (UEM), Jaipur",
+            initials: "CP",
+            photo: "/images/committee/chandra-prakash.jpeg"
+          },
+          {
+            name: "Prof. Dipta Mukherjee",
+            role: "Conference Chair",
+            badgeType: "chair",
+            designation: "Professor",
+            affiliation: "University of Engineering & Management (UEM), Jaipur",
+            initials: "DM",
+            photo: "/images/committee/dipta-mukherjee.jpeg"
+          }
+        ]
+      },
+      {
+        groupTitle: "Convenors",
+        members: [
+          {
+            name: "Prof. Debajyoti Chatterjee",
+            role: "Convenor",
+            badgeType: "convenor",
+            designation: "Professor",
+            affiliation: "University of Engineering & Management (UEM), Jaipur",
+            initials: "DC",
+            photo: "/images/committee/debajyoti-chatterjee.jpeg"
+          },
+          {
+            name: "Prof. Surajit Sur",
+            role: "Convenor",
+            badgeType: "convenor",
+            designation: "Professor",
+            affiliation: "University of Engineering & Management (UEM), Jaipur",
+            initials: "SS",
+            photo: "/images/committee/surajit-sur.jpeg"
+          }
+        ]
+      }
+    ]
   },
-  // Conference Chair
+  // Tier 5: TPC Chair
   {
-    name: "Prof. Sourav Chakraborty",
-    role: "Conference Chair",
-    badgeType: "organizing",
-    category: "organizing",
-    designation: "Professor",
-    affiliation: "University of Engineering & Management (UEM), Jaipur",
-    initials: "SC",
-    photo: "/images/committee/sourav-chakraborty.jpeg"
+    tierId: "tpc-chair",
+    tierBadge: "Tier 5 • Technical Leadership",
+    title: "Technical Program Committee (TPC) Chair",
+    subtitle: "Technical review standards, track peer-reviews & scholarly rigor",
+    filterCategory: "tpc",
+    layout: "centered-1",
+    members: [
+      {
+        name: "Dr. S. K. Ghosh",
+        role: "TPC Chair",
+        badgeType: "tpc",
+        designation: "Chief Scientist and Professor",
+        affiliation: "CSIR-CEERI Pilani",
+        initials: "SG",
+        photo: "/images/committee/sk-ghosh.jpg"
+      }
+    ]
   },
-  // Convener
+  // Tier 6: Organizing Secretary
   {
-    name: "Prof. (Dr.) Mukesh Yadav",
-    role: "Convener",
-    badgeType: "organizing",
-    category: "organizing",
-    designation: "Professor",
-    affiliation: "University of Engineering & Management (UEM), Jaipur",
-    initials: "MY",
-    photo: "/images/committee/mukesh-yadav.jpeg"
+    tierId: "organizing-sec",
+    tierBadge: "Tier 6 • Secretariat",
+    title: "Organizing Secretary",
+    subtitle: "Conference operations, secretarial governance & delegate liaison",
+    filterCategory: "tpc",
+    layout: "centered-1",
+    members: [
+      {
+        name: "Prof. Sourav Chakraborty",
+        role: "Organizing Secretary",
+        badgeType: "organizing",
+        designation: "Professor",
+        affiliation: "University of Engineering & Management (UEM), Jaipur",
+        initials: "SC",
+        photo: "/images/committee/sourav-chakraborty.jpeg"
+      }
+    ]
   },
-  // Co-Conveners
+  // Tier 7: Editorial Board
   {
-    name: "Prof. Dipta Mukherjee",
-    role: "Co-Convener",
-    badgeType: "organizing",
-    category: "organizing",
-    designation: "Professor",
-    affiliation: "University of Engineering & Management (UEM), Jaipur",
-    initials: "DM",
-    photo: "/images/committee/dipta-mukherjee.jpeg"
-  },
-  {
-    name: "Prof. Surajit Sur",
-    role: "Co-Convener",
-    badgeType: "organizing",
-    category: "organizing",
-    designation: "Professor",
-    affiliation: "University of Engineering & Management (UEM), Jaipur",
-    initials: "SS",
-    photo: "/images/committee/surajit-sur.jpeg"
-  },
-  // TPC Chair
-  {
-    name: "Prof. Debajyoti Chatterjee",
-    role: "TPC Chair",
-    badgeType: "tpc",
-    category: "tpc",
-    designation: "Professor",
-    affiliation: "University of Engineering & Management (UEM), Jaipur",
-    initials: "DC",
-    photo: "/images/committee/debajyoti-chatterjee.jpeg"
-  },
-  // Publication Chairs
-  {
-    name: "Dr. Arnab Palui",
-    role: "Publication Chair",
-    badgeType: "publication",
-    category: "publication",
-    designation: "Faculty & Researcher",
-    affiliation: "University of Engineering & Management (UEM), Jaipur",
-    initials: "AP"
-  },
-  {
-    name: "Dr. Anamika Khaskel",
-    role: "Publication Chair",
-    badgeType: "publication",
-    category: "publication",
-    designation: "Faculty & Researcher",
-    affiliation: "University of Engineering & Management (UEM), Jaipur",
-    initials: "AK"
-  },
-  // Editorial Board
-  {
-    name: "Dr. Tapas Si",
-    role: "Editorial Board",
-    badgeType: "publication",
-    category: "publication",
-    designation: "Faculty & Editorial Lead",
-    affiliation: "University of Engineering & Management (UEM), Jaipur",
-    initials: "TS"
+    tierId: "publication-editorial",
+    tierBadge: "Tier 7 • Editorial Leadership",
+    title: "Editorial Board",
+    subtitle: "Scopus proceedings compilation, publisher indexing & camera-ready management",
+    filterCategory: "publication",
+    layout: "grid-3",
+    members: [
+      {
+        name: "Dr. Tapas Si",
+        role: "Editorial Board",
+        badgeType: "publication",
+        designation: "Faculty & Editorial Lead",
+        affiliation: "University of Engineering & Management (UEM), Jaipur",
+        initials: "TS",
+        photo: "/images/committee/tapas-si.jpg"
+      },
+      {
+        name: "Prof. (Dr.) Souvik Saha",
+        role: "Editorial Board",
+        badgeType: "publication",
+        designation: "Professor",
+        affiliation: "Amity University Kolkata",
+        initials: "SS",
+        photo: "/images/committee/souvik-saha.jpeg"
+      },
+      {
+        name: "Prof. (Dr.) Pritha Chanda",
+        role: "Editorial Board",
+        badgeType: "publication",
+        designation: " Professor",
+        affiliation: "Institute of Engineering & Management (IEM), Kolkata",
+        initials: "PC",
+        photo: "/images/committee/pritha-chanda.jpeg"
+      }
+    ]
   }
 ];
+
+function CommitteeMemberCard({ member }) {
+  const [imgError, setImgError] = useState(false);
+
+  return (
+    <article className={`committee-photo-card badge-type-${member.badgeType || 'general'}`}>
+      <div className="committee-photo-frame">
+        {member.photo && !imgError ? (
+          <img
+            src={member.photo}
+            alt={member.name}
+            className="committee-photo-img"
+            onError={() => setImgError(true)}
+            loading="lazy"
+          />
+        ) : (
+          <div className="committee-photo-placeholder">
+            <span className="placeholder-avatar-bubble">{member.initials}</span>
+          </div>
+        )}
+        <span className="committee-role-badge">{member.role}</span>
+      </div>
+
+      <div className="committee-card-body">
+        <h4 className="committee-member-name">{member.name}</h4>
+        {member.designation && (
+          <p className="committee-member-designation">{member.designation}</p>
+        )}
+        {member.affiliation && (
+          <p className="committee-member-affil">
+            <Award size={13} style={{ flexShrink: 0, opacity: 0.8 }} />
+            <span>{member.affiliation}</span>
+          </p>
+        )}
+      </div>
+    </article>
+  );
+}
 
 function SectionHeading({ eyebrow, title, text, align = "left" }) {
   return (
@@ -560,9 +695,9 @@ export default function App() {
     ? tracks
     : tracks.filter(t => t.category === activeTrackFilter);
 
-  const filteredCommittee = activeCommitteeFilter === 'all'
-    ? committeeData
-    : committeeData.filter(m => m.category === activeCommitteeFilter);
+  const filteredCommitteeTiers = activeCommitteeFilter === 'all'
+    ? committeeTiers
+    : committeeTiers.filter(t => t.filterCategory === activeCommitteeFilter);
 
   return (
     <div className="page-shell">
@@ -1296,21 +1431,15 @@ export default function App() {
               <section className="section committee-section-enhanced" id="committee">
                 <div className="container">
                   <SectionHeading
-                    eyebrow="GOVERNANCE & LEADERSHIP"
+                    eyebrow="GOVERNANCE & HIERARCHY"
                     title="Organizing & Technical Committees"
-                    text="Approved leadership roster comprising Chief Patrons, Patrons, Conference Chairs, Conveners, TPC Chair, and Publication Chairs."
+                    text="Approved hierarchical leadership structure comprising Chief Patrons, Patron, Honorary Chairs, Conference Chairs, Convenors, TPC Chair, and Organizing Secretary."
                     align="center"
                   />
 
-                  {/* Filter Bar */}
-                  <div className="committee-filter-bar" style={{ margin: '30px auto 40px' }}>
-                    {[
-                      { id: 'all', label: 'All Committee Members' },
-                      { id: 'patrons', label: 'Patrons' },
-                      { id: 'organizing', label: 'Chairs & Conveners' },
-                      { id: 'tpc', label: 'Technical Program (TPC)' },
-                      { id: 'publication', label: 'Publication & Editorial' }
-                    ].map((filter) => (
+                  {/* Filter / View Bar */}
+                  <div className="committee-filter-bar" style={{ margin: '30px auto 44px' }}>
+                    {committeeFilters.map((filter) => (
                       <button
                         key={filter.id}
                         type="button"
@@ -1322,34 +1451,76 @@ export default function App() {
                     ))}
                   </div>
 
-                  {/* Members Grid */}
-                  <div className="committee-photo-grid">
-                    {filteredCommittee.map((member, idx) => (
-                      <article key={idx} className={`committee-photo-card badge-type-${member.badgeType}`}>
-                        <div className="committee-photo-frame">
-                          {member.photo ? (
-                            <img
-                              src={member.photo}
-                              alt={member.name}
-                              className="committee-photo-img"
-                              onError={(e) => {
-                                e.target.style.display = 'none';
-                                e.target.nextSibling.style.display = 'grid';
-                              }}
-                            />
-                          ) : null}
-                          <div className="committee-photo-placeholder" style={{ display: member.photo ? 'none' : 'grid' }}>
-                            {member.initials}
+                  {/* Hierarchical Tree Container */}
+                  <div className="committee-tree-container">
+                    {filteredCommitteeTiers.map((tier, tIdx) => (
+                      <React.Fragment key={tier.tierId}>
+                        {tIdx > 0 && (
+                          <div className="committee-tree-connector" aria-hidden="true">
+                            <div className="committee-tree-connector-line" />
+                            <div className="committee-tree-connector-node" />
                           </div>
-                          <span className="committee-role-badge">{member.role}</span>
-                        </div>
+                        )}
 
-                        <div className="committee-card-body">
-                          <h4 className="committee-member-name">{member.name}</h4>
-                          <p className="committee-member-designation">{member.designation}</p>
-                          <p className="committee-member-affil">{member.affiliation}</p>
-                        </div>
-                      </article>
+                        <section className="committee-tier-block">
+                          <div className="committee-tier-header">
+                            <span className="committee-tier-badge">{tier.tierBadge}</span>
+                            <h3 className="committee-tier-title">{tier.title}</h3>
+                            {tier.subtitle && <p className="committee-tier-subtitle">{tier.subtitle}</p>}
+                          </div>
+
+                          {/* Layout: Centered 1 Card */}
+                          {tier.layout === 'centered-1' && (
+                            <div className="committee-row-single">
+                              {tier.members.map((member, mIdx) => (
+                                <CommitteeMemberCard key={mIdx} member={member} />
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Layout: Centered 2 Cards */}
+                          {tier.layout === 'centered-2' && (
+                            <div className="committee-row-double">
+                              {tier.members.map((member, mIdx) => (
+                                <CommitteeMemberCard key={mIdx} member={member} />
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Layout: Split Columns (Chairs & Convenors) */}
+                          {tier.layout === 'split-columns' && (
+                            <div className="committee-split-container">
+                              {tier.columns.map((col, cIdx) => (
+                                <div key={cIdx} className="committee-split-panel">
+                                  <div className="committee-subgroup-header">
+                                    <h4 className="committee-subgroup-title">
+                                      <Users size={18} style={{ color: '#c76d42', flexShrink: 0 }} />
+                                      <span>{col.groupTitle}</span>
+                                    </h4>
+                                    <span className="committee-subgroup-count">
+                                      {col.members.length} {col.members.length === 1 ? 'Member' : 'Members'}
+                                    </span>
+                                  </div>
+                                  <div className="committee-subgroup-grid">
+                                    {col.members.map((member, mIdx) => (
+                                      <CommitteeMemberCard key={mIdx} member={member} />
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Layout: Grid 3 Cards */}
+                          {tier.layout === 'grid-3' && (
+                            <div className="committee-row-triple">
+                              {tier.members.map((member, mIdx) => (
+                                <CommitteeMemberCard key={mIdx} member={member} />
+                              ))}
+                            </div>
+                          )}
+                        </section>
+                      </React.Fragment>
                     ))}
                   </div>
                 </div>
