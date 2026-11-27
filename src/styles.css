@@ -390,6 +390,11 @@
   color: #ffffff;
 }
 
+.badge-type-finance .committee-role-badge {
+  background: linear-gradient(135deg, #047857, #10b981);
+  color: #ffffff;
+}
+
 .badge-type-publication .committee-role-badge {
   background: linear-gradient(135deg, #4338ca, #6366f1);
   color: #ffffff;

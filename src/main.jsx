@@ -34,7 +34,8 @@ const navLinks = [
   { id: 'dates', label: 'Dates', href: '#dates' },
   { id: 'registration', label: 'Registration', href: '#registration' },
   { id: 'committee', label: 'Committee', href: '#committee' },
-  { id: 'venue', label: 'Venue', href: '#venue' }
+  { id: 'venue', label: 'Venue', href: '#venue' },
+  { id: 'contact', label: 'Contact Us', href: '#contact' }
 ];
 
 const tickerItems = [
@@ -278,6 +279,7 @@ const foreignFees = [
 const committeeFilters = [
   { id: 'all', label: 'All Hierarchy Tiers' },
   { id: 'patrons', label: 'Patrons & Leadership' },
+  { id: 'finance', label: 'Finance' },
   { id: 'chairs', label: 'Chairs & Convenors' },
   { id: 'tpc', label: 'TPC & Organizing' },
   { id: 'publication', label: 'Publication & Editorial' }
@@ -333,24 +335,15 @@ const committeeTiers = [
       }
     ]
   },
-  // Tier 3: Honorary Chairs
+  // Tier 3: Honorary Chair
   {
     tierId: "honorary-chairs",
-    tierBadge: "Tier 3 • Honorary Chairs",
-    title: "Honorary Chairs",
+    tierBadge: "Tier 3 • Honorary Chair",
+    title: "Honorary Chair",
     subtitle: "Distinguished academic oversight & honorary advisory",
     filterCategory: "patrons",
-    layout: "centered-2",
+    layout: "centered-1",
     members: [
-      {
-        name: "Prof. (Dr.) Pradeep Kumar Sharma",
-        role: "Honorary Chair",
-        badgeType: "leadership",
-        designation: "Registrar",
-        affiliation: "University of Engineering & Management (UEM), Jaipur",
-        initials: "PS",
-        photo: "/images/committee/pradeep-kumar-sharma.jpeg"
-      },
       {
         name: "Prof. (Dr.) Mukesh Yadav",
         role: "Honorary Chair",
@@ -362,10 +355,30 @@ const committeeTiers = [
       }
     ]
   },
-  // Tier 4: Conference Chair & Convenor
+  // Tier 4: Finance
+  {
+    tierId: "finance",
+    tierBadge: "Tier 4 • Finance Leadership",
+    title: "Finance",
+    subtitle: "Budgetary governance, financial administration & fiscal oversight",
+    filterCategory: "finance",
+    layout: "centered-1",
+    members: [
+      {
+        name: "Prof. (Dr.) Pradeep Kumar Sharma",
+        role: "Finance Chair",
+        badgeType: "finance",
+        designation: "Registrar",
+        affiliation: "University of Engineering & Management (UEM), Jaipur",
+        initials: "PS",
+        photo: "/images/committee/pradeep-kumar-sharma.jpeg"
+      }
+    ]
+  },
+  // Tier 5: Conference Chair & Convenor
   {
     tierId: "chairs-convenors",
-    tierBadge: "Tier 4 • Conference Leadership",
+    tierBadge: "Tier 5 • Conference Leadership",
     title: "Conference Chairs & Convenors",
     subtitle: "Executive conference execution & academic convening",
     filterCategory: "chairs",
@@ -419,10 +432,10 @@ const committeeTiers = [
       }
     ]
   },
-  // Tier 5: TPC Chair
+  // Tier 6: TPC Chair
   {
     tierId: "tpc-chair",
-    tierBadge: "Tier 5 • Technical Leadership",
+    tierBadge: "Tier 6 • Technical Leadership",
     title: "Technical Program Committee (TPC) Chair",
     subtitle: "Technical review standards, track peer-reviews & scholarly rigor",
     filterCategory: "tpc",
@@ -439,10 +452,10 @@ const committeeTiers = [
       }
     ]
   },
-  // Tier 6: Organizing Secretary
+  // Tier 7: Organizing Secretary
   {
     tierId: "organizing-sec",
-    tierBadge: "Tier 6 • Secretariat",
+    tierBadge: "Tier 7 • Secretariat",
     title: "Organizing Secretary",
     subtitle: "Conference operations, secretarial governance & delegate liaison",
     filterCategory: "tpc",
@@ -459,10 +472,10 @@ const committeeTiers = [
       }
     ]
   },
-  // Tier 7: Editorial Board
+  // Tier 8: Editorial Board
   {
     tierId: "publication-editorial",
-    tierBadge: "Tier 7 • Editorial Leadership",
+    tierBadge: "Tier 8 • Editorial Leadership",
     title: "Editorial Board",
     subtitle: "Scopus proceedings compilation, publisher indexing & camera-ready management",
     filterCategory: "publication",
@@ -1628,6 +1641,178 @@ export default function App() {
               </section>
             </motion.div>
           )}
+
+          {activeTab === 'contact' && (
+            <motion.div
+              key="contact"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <section className="section section-alt" id="contact">
+                <div className="container" style={{ maxWidth: '1000px' }}>
+                  <SectionHeading
+                    eyebrow="COMMUNICATIONS & SECRETARIAT"
+                    title="Contact Us"
+                    text="Reach out directly to the CONVERGIA 2027 Organizing Committee & Secretariat for paper submissions, registrations, and general enquiries."
+                    align="center"
+                  />
+
+                  {/* Main Contact Grid */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '22px', margin: '36px 0 32px' }}>
+                    {/* Secretariat Card */}
+                    <div style={{ background: '#ffffff', border: '1px solid #d8d4c9', borderRadius: '12px', padding: '26px', boxShadow: '0 4px 14px rgba(23, 51, 40, 0.05)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      <div>
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(199, 109, 66, 0.1)', color: '#c76d42', padding: '3px 10px', borderRadius: '16px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.6px', textTransform: 'uppercase', marginBottom: '14px' }}>
+                          <Users size={12} />
+                          Organizing Secretariat
+                        </div>
+                        <h3 style={{ fontFamily: 'Playfair Display', fontSize: '20px', color: '#173328', margin: '0 0 6px' }}>
+                          Prof. Sourav Chakraborty
+                        </h3>
+                        <p style={{ fontSize: '13.5px', color: '#244b3c', fontWeight: 600, margin: '0 0 8px' }}>
+                          Organizing Secretary, CONVERGIA 2027
+                        </p>
+                        <p style={{ fontSize: '12.5px', color: '#555', lineHeight: 1.5, margin: 0 }}>
+                          University of Engineering & Management (UEM), Jaipur<br />
+                          Institute of Engineering & Management (IEM) Group
+                        </p>
+                      </div>
+
+                      <div style={{ marginTop: '20px', paddingTop: '14px', borderTop: '1px solid #eef0ec' }}>
+                        <span style={{ fontSize: '11px', color: '#888', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                          Assistance Timings
+                        </span>
+                        <p style={{ fontSize: '12.5px', color: '#173328', margin: '3px 0 0', fontWeight: 500 }}>
+                          Mon – Sat · 9:30 AM to 6:00 PM IST
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Phone Helpline Card */}
+                    <div style={{ background: '#ffffff', border: '1px solid #d8d4c9', borderRadius: '12px', padding: '26px', boxShadow: '0 4px 14px rgba(23, 51, 40, 0.05)' }}>
+                      <div style={{ width: '44px', height: '44px', borderRadius: '8px', background: 'rgba(36, 75, 60, 0.08)', color: '#244b3c', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px' }}>
+                        <Phone size={20} />
+                      </div>
+                      <span style={{ fontSize: '11px', fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
+                        Helpline Number
+                      </span>
+                      <h4 style={{ fontSize: '17px', color: '#173328', margin: '3px 0 10px', fontWeight: 700 }}>
+                        Call / WhatsApp Contact
+                      </h4>
+                      <p style={{ fontSize: '12.5px', color: '#555', lineHeight: 1.5, margin: '0 0 16px' }}>
+                        For author queries, track information, and registration assistance:
+                      </p>
+                      <a
+                        href="tel:7439367511"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          background: '#173328',
+                          color: '#ffffff',
+                          padding: '10px 18px',
+                          borderRadius: '6px',
+                          fontSize: '15px',
+                          fontWeight: 700,
+                          textDecoration: 'none',
+                          boxShadow: '0 2px 8px rgba(23, 51, 40, 0.2)'
+                        }}
+                      >
+                        <Phone size={15} />
+                        <span>7439367511</span>
+                      </a>
+                    </div>
+
+                    {/* Email Correspondence Card */}
+                    <div style={{ background: '#ffffff', border: '1px solid #d8d4c9', borderRadius: '12px', padding: '26px', boxShadow: '0 4px 14px rgba(23, 51, 40, 0.05)' }}>
+                      <div style={{ width: '44px', height: '44px', borderRadius: '8px', background: 'rgba(199, 109, 66, 0.1)', color: '#c76d42', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px' }}>
+                        <Mail size={20} />
+                      </div>
+                      <span style={{ fontSize: '11px', fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
+                        Email Correspondence
+                      </span>
+                      <h4 style={{ fontSize: '17px', color: '#173328', margin: '3px 0 10px', fontWeight: 700 }}>
+                        Official Email Addresses
+                      </h4>
+                      <p style={{ fontSize: '12.5px', color: '#555', lineHeight: 1.5, margin: '0 0 14px' }}>
+                        Submit queries and correspondence to the organizing secretariat:
+                      </p>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <a
+                          href="mailto:sourav.chakraborty@iem.edu.in"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            background: '#faf8f3',
+                            border: '1px solid #d8d4c9',
+                            color: '#173328',
+                            padding: '8px 12px',
+                            borderRadius: '6px',
+                            fontSize: '13px',
+                            fontWeight: 600,
+                            textDecoration: 'none',
+                            wordBreak: 'break-all'
+                          }}
+                        >
+                          <Mail size={13} color="#c76d42" />
+                          <span>sourav.chakraborty@iem.edu.in</span>
+                        </a>
+                        <a
+                          href="mailto:sourav.chakraborty@uem.edu.in"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            background: '#faf8f3',
+                            border: '1px solid #d8d4c9',
+                            color: '#173328',
+                            padding: '8px 12px',
+                            borderRadius: '6px',
+                            fontSize: '13px',
+                            fontWeight: 600,
+                            textDecoration: 'none',
+                            wordBreak: 'break-all'
+                          }}
+                        >
+                          <Mail size={13} color="#244b3c" />
+                          <span>sourav.chakraborty@uem.edu.in</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Conference Venue & Secretariat Location */}
+                  <div style={{ background: '#173328', color: '#f4f1e9', borderRadius: '12px', padding: '24px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px', maxWidth: '640px' }}>
+                      <div style={{ background: 'rgba(255, 255, 255, 0.12)', padding: '10px', borderRadius: '8px', flexShrink: 0 }}>
+                        <MapPin size={22} color="#ffffff" />
+                      </div>
+                      <div>
+                        <h4 style={{ fontFamily: 'Playfair Display', fontSize: '17px', color: '#ffffff', margin: '0 0 4px' }}>
+                          Campus Secretariat Office
+                        </h4>
+                        <p style={{ fontSize: '13px', color: '#d8d4c9', margin: 0, lineHeight: 1.45 }}>
+                          {conf.venueAddress}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      className="btn btn-amber"
+                      onClick={() => handleTabChange('venue')}
+                      style={{ padding: '8px 16px', fontSize: '12.5px' }}
+                    >
+                      <span>Explore Venue Map</span>
+                      <ArrowRight size={13} />
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </motion.div>
+          )}
         </AnimatePresence>
       </main>
 
@@ -1673,10 +1858,10 @@ export default function App() {
           <div className="footer-col">
             <h4>Authors & Delegates</h4>
             <ul>
-              {['dates', 'registration', 'committee', 'venue'].map((id) => (
+              {['dates', 'registration', 'committee', 'venue', 'contact'].map((id) => (
                 <li key={id}>
                   <button type="button" className="footer-link-btn" onClick={() => handleTabChange(id)}>
-                    {id.charAt(0).toUpperCase() + id.slice(1)}
+                    {id === 'contact' ? 'Contact Us' : id.charAt(0).toUpperCase() + id.slice(1)}
                   </button>
                 </li>
               ))}
@@ -1684,11 +1869,14 @@ export default function App() {
           </div>
 
           <div className="footer-col">
-            <h4>Organizing Venue</h4>
+            <h4>Conference Secretariat</h4>
             <p className="footer-venue-text">
-              <strong>{conf.venueName}</strong><br />
-              {conf.venueAddress}<br />
-              <strong>Mode:</strong> {conf.format}
+              <strong>Prof. Sourav Chakraborty</strong><br />
+              Organizing Secretary<br />
+              <strong>Phone:</strong> <a href="tel:7439367511" style={{ color: '#d8d4c9', textDecoration: 'underline' }}>7439367511</a><br />
+              <strong>Email:</strong><br />
+              <a href="mailto:sourav.chakraborty@iem.edu.in" style={{ color: '#d8d4c9', textDecoration: 'underline', display: 'block' }}>sourav.chakraborty@iem.edu.in</a>
+              <a href="mailto:sourav.chakraborty@uem.edu.in" style={{ color: '#d8d4c9', textDecoration: 'underline', display: 'block' }}>sourav.chakraborty@uem.edu.in</a>
             </p>
           </div>
         </div>
