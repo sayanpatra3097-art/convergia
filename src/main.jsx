@@ -743,28 +743,20 @@ export default function App() {
               </div>
             </div>
 
-            <div className="header-top-item header-top-brand-col" style={{ flex: '1 1 auto', display: 'flex', justifyContent: 'center' }}>
-              <a className="brand-mapcon brand-mapcon-center" href="#home" onClick={(e) => { e.preventDefault(); handleTabChange('home'); }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
+            <div className="header-top-item header-top-brand-col">
+              <a className="brand-mapcon brand-mapcon-center" href="#home" onClick={(e) => { e.preventDefault(); handleTabChange('home'); }}>
                 <img
                   src="/images/convergia-logo.png"
                   alt="CONVERGIA 2027"
-                  style={{
-                    height: '110px',
-                    width: 'auto',
-                    maxHeight: '118px',
-                    maxWidth: '480px',
-                    objectFit: 'contain',
-                    filter: 'drop-shadow(0 3px 10px rgba(36,75,60,0.12)) contrast(1.15)',
-                    transition: 'transform 0.25s ease'
-                  }}
+                  className="header-convergia-brand-logo"
                   onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.03)'; }}
                   onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
                 />
               </a>
             </div>
 
-            <div className="header-top-item header-top-right-col" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-              <div className="brand-badge-pill" style={{ background: '#244b3c', padding: '6px 16px', borderRadius: '4px', fontSize: '11px', fontWeight: 700, color: '#ffffff', letterSpacing: '0.06em' }}>
+            <div className="header-top-item header-top-right-col">
+              <div className="brand-badge-pill">
                 HYBRID · JAIPUR, INDIA
               </div>
             </div>
@@ -774,6 +766,10 @@ export default function App() {
         {/* Tier 2: Main Dark Navigation Bar */}
         <div className={`main-nav-bar-dark ${isScrolled ? 'is-scrolled' : ''}`}>
           <div className="container nav-bar-inner">
+            <div className="mobile-brand-indicator">
+              <span className="mobile-brand-title">CONVERGIA 2027</span>
+            </div>
+
             <nav className="desktop-nav-dark" aria-label="Main navigation">
               {navLinks.map((tab) => (
                 <a
@@ -787,7 +783,7 @@ export default function App() {
               ))}
             </nav>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div className="nav-actions-right">
               <button
                 type="button"
                 className="btn-register-now"
@@ -799,10 +795,10 @@ export default function App() {
 
               <button
                 type="button"
-                className="menu-toggle"
+                className="menu-toggle-btn"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Toggle navigation"
-                style={{ background: 'none', border: 'none', color: '#f4f1e9', cursor: 'pointer', display: 'none' }}
+                aria-label="Toggle navigation menu"
+                aria-expanded={mobileMenuOpen}
               >
                 {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
@@ -812,16 +808,16 @@ export default function App() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="mobile-nav-drawer" style={{ background: '#244b3c', padding: '16px 24px', display: 'flex', flexDirection: 'column', gap: '10px', borderBottom: '2px solid #c76d42' }}>
+          <div className="mobile-nav-drawer">
             {navLinks.map((tab) => (
               <a
                 key={tab.id}
                 href={tab.href}
-                className={`nav-link-dark ${activeTab === tab.id ? 'is-active' : ''}`}
+                className={`mobile-nav-link ${activeTab === tab.id ? 'is-active' : ''}`}
                 onClick={(e) => { e.preventDefault(); handleTabChange(tab.id); }}
-                style={{ textAlign: 'left', padding: '8px 0', fontSize: '14px' }}
               >
-                {tab.label}
+                <span>{tab.label}</span>
+                <ChevronRight size={15} style={{ opacity: 0.6 }} />
               </a>
             ))}
           </div>
