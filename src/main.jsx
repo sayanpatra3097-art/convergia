@@ -549,7 +549,16 @@ function SectionHeading({ eyebrow, title, text, align = "left" }) {
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('home');
+  const getInitialTab = () => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      const valid = ['home', 'about', 'tracks', 'dates', 'registration', 'committee', 'venue'];
+      if (valid.includes(hash)) return hash;
+    }
+    return 'home';
+  };
+
+  const [activeTab, setActiveTab] = useState(getInitialTab);
   const [activeTrackFilter, setActiveTrackFilter] = useState('all');
   const [activeCommitteeFilter, setActiveCommitteeFilter] = useState('all');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -558,6 +567,19 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const canvasRef = useRef(null);
   const marqueeRef = useRef(null);
+
+  // Sync hash changes
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      const valid = ['home', 'about', 'tracks', 'dates', 'registration', 'committee', 'venue'];
+      if (valid.includes(hash)) {
+        setActiveTab(hash);
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
 
   // Dynamic center pop-out effect for publication marquee logos
   useEffect(() => {
@@ -611,6 +633,11 @@ export default function App() {
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
     setMobileMenuOpen(false);
+    if (typeof window !== 'undefined') {
+      try {
+        window.history.replaceState(null, '', tabId === 'home' ? window.location.pathname : `#${tabId}`);
+      } catch (err) {}
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
