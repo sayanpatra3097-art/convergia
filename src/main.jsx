@@ -274,6 +274,7 @@ const foreignFees = [
   { category: "Participant (only)", amount: "$50", notes: "Virtual attendance and access to digital conference proceedings" }
 ];
 
+// Official CONVERGIA 2027 Committee Hierarchy & Leadership Structure
 const committeeFilters = [
   { id: 'all', label: 'All Hierarchy Tiers' },
   { id: 'patrons', label: 'Patrons & Leadership' },
